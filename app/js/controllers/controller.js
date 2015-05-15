@@ -1,60 +1,123 @@
-app.controller('MainController', function($rootScope, $scope, getCoffee){
-// Add later to controler ", $firebaseObject"
+app.controller('MainController', function($rootScope, $scope, getCoffee, Coffee){
 
 
 
-  // Load data
-  getCoffee.success(function(data) {
-	$scope.getCoffeeData = data;
-  });
+	// Data model for the form inputs
+	$scope.coffeeModel = {
+		brand : "Douwe Egberts",
+		type : "Espresso",
+		description : "nice coffee",
+		amount : 500,
+		price : 15
+	};
 
 
-$scope.isDayEmpty = function(){
-    return $scope.getCoffeeData.length > 0 ? false : true;
-}
+
+	// Grab the DB results
+	Coffee.query(function(data) {
+		$scope.posts = data;
+	});
 
 
-  // User agent displayed in home page
-  $scope.userAgent = navigator.userAgent;
-  
-  // Needed for the loading screen
-  $rootScope.$on('$routeChangeStart', function(){
-	$rootScope.loading = true;
-  });
 
-  $rootScope.$on('$routeChangeSuccess', function(){
-	$rootScope.loading = false;
-  });
 
-  // Fake text i used here and there.
-  $scope.lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel explicabo, aliquid eaque soluta nihil eligendi adipisci error, illum corrupti nam fuga omnis quod quaerat mollitia expedita impedit dolores ipsam. Obcaecati.';
+	// Delete Coffee Post
+	$scope.deleteCoffee = function(item, id, index) {
+		console.log(id);
+		//Coffee.delete({ id: id }); // SEND delete request
+		item.splice(index, 1);
+	};
 
-  //
-  // 'Forms' screen
-  //  
-  $scope.rememberMe = true;
-  $scope.email = 'me@example.com';
-  
-  $scope.login = function(data) {
+
+
+
+	$scope.getUnicCoffee = function(item_id) {
+		Coffee.get({ id: item_id }, function(data) {
+			$scope.postUnic = data;
+			console.log(data);
+		});
+	}
+
+
+
+	// Form handler
+	$scope.formData = {};
+
+	// process the form
+	$scope.processForm = function() {
+
+		var data = $scope.formData
+		console.log(data);
+/*
+		$http({
+		method  : 'POST',
+		url     : 'http://api.kpndigital.nl:3000/coffees/',
+		data    : $.param($scope.formData),  // pass in data as strings
+		headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+		})
+
+		.success(function(data) {
+		
+		console.log(data);
+
+		if (!data.success) {
+		  // if not successful, bind errors to error variables
+		  $scope.errorBrand = data.errors.brand;
+		  $scope.errorPrice = data.errors.price;
+		} else {
+		  // if successful, bind success message to message
+		  $scope.message = data.message;
+		}
+		});
+*/
+
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// 'Forms' screen
+//  
+$scope.rememberMe = true;
+$scope.email = 'me@example.com';
+
+$scope.login = function(data) {
 	alert('You submitted the login form');
-  };
+};
+
+
+
+$scope.master = {};
+$scope.update = function(coffee) {
+	$scope.master = angular.copy(coffee);
+};
+$scope.reset = function() {
+	$scope.coffee = angular.copy($scope.master);
+};
+$scope.reset();
 
 
 
 
-	$scope.master = {};
 
-	$scope.update = function(coffee) {
-		$scope.master = angular.copy(coffee);
-	};
-
-	$scope.reset = function() {
-		$scope.coffee = angular.copy($scope.master);
-	};
-
-	$scope.reset();
-
-
+// Needed for the loading screen
+$rootScope.$on('$routeChangeStart', function(){
+	$rootScope.loading = true;
+});
+$rootScope.$on('$routeChangeSuccess', function(){
+	$rootScope.loading = false;
+});
 
 
 });
