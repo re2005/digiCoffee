@@ -11,6 +11,10 @@ app.controller('MainController', function($rootScope, $scope, getCoffee, Coffee)
 		price : 15
 	};
 
+	$scope.messages = {
+		confirmAction : "Are you sure you want to delete?"
+	}
+
 
 
 	// Grab the DB results

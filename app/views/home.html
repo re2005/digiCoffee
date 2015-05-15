@@ -1,12 +1,11 @@
 <div class="scrollable">  
 	<div class="scrollable-content">
-
-
 	 	<div class="list-group-item list-group-item-home">
 
-			<div ng-repeat="post in posts" id="{{post._id}}">
+			Serach by Brand: <input type="text" ng-model="search.brand">
+			<div ng-repeat="post in posts | filter:search.brand" id="{{post._id}}">
 				<coffee-app info="post.expenses"></coffee-app>
-				<button ng-href='#' ng-click="deleteCoffee(posts, post._id, $index)">delete</button>
+				<button ng-href='#' confirmed-click="deleteCoffee(posts, post._id, $index)" ng-confirm-click="{{messages.confirmAction}}">remove</button>
 			</div>
 
 		</div>
