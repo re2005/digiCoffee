@@ -1,0 +1,50 @@
+<div class="scrollable">  
+	<div class="scrollable-content">
+
+	<div class="list-group-item list-group-item-home">
+
+	  <form role="form" ng-submit='update(coffee)' id="add_coffee">
+		<fieldset>
+		  <legend>Add Coffee</legend>
+			<div class="form-group has-success has-feedback">
+			  <label>Brand</label>
+			  <input type="text"
+					 ng-model="coffee.brand"
+					 class="form-control"
+					 placeholder="Brand">
+			</div>
+
+			<div class="form-group has-success has-feedback">
+			  <label>Price</label>
+			  <input type="text"
+					 ng-model="coffee.price"
+					 class="form-control"
+					 placeholder="50">
+			</div>
+
+		</fieldset>
+		<hr>
+
+		<button class="btn btn-primary btn-block">
+		  Send
+		</button>
+
+		<div ui-content-for="navbarAction">
+		  <a class='btn' ng-click='update(coffee)'>Send</a>
+		</div>
+
+<input type="button" ng-click="reset()" value="Reset" />
+
+	  </form>
+
+
+<pre>form = {{user | json}}</pre>
+  <pre>master = {{master | json}}</pre>
+
+{{brand}},
+{{price}},
+
+	</div>
+
+	</div>
+</div>
