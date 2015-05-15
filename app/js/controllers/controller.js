@@ -24,7 +24,7 @@ app.controller('MainController', function($rootScope, $scope, getCoffee, Coffee)
 	// Delete Coffee Post
 	$scope.deleteCoffee = function(item, id, index) {
 		console.log(id);
-		//Coffee.delete({ id: id }); // SEND delete request
+		Coffee.delete({ id: id }); // SEND delete request
 		item.splice(index, 1);
 	};
 
@@ -35,8 +35,13 @@ app.controller('MainController', function($rootScope, $scope, getCoffee, Coffee)
 		Coffee.get({ id: item_id }, function(data) {
 			$scope.postUnic = data;
 			console.log(data);
+			
 		});
-	}
+	};
+
+
+
+
 
 
 
@@ -47,7 +52,11 @@ app.controller('MainController', function($rootScope, $scope, getCoffee, Coffee)
 	$scope.processForm = function() {
 
 		var data = $scope.formData
+		
+
 		console.log(data);
+
+		Coffee.save(data);
 /*
 		$http({
 		method  : 'POST',
