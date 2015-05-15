@@ -1,4 +1,4 @@
-var app = angular.module('angularPro', [
+var app = angular.module('digitalCoffee', [
 	'ngRoute',
 	'ngResource',
 	'mobile-angular-ui'

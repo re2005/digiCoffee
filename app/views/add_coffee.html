@@ -6,6 +6,10 @@
 			<!-- FORM -->
 			<form ng-submit="processForm()">
 
+				<button type="button" class="btn" ng-click="autofillCoffee()">
+					<span class="glyphicon"></span> autofill
+				</button>
+
 				<!-- Brand -->
 				<div id="name-group" class="form-group">
 					<label>Brand</label>
@@ -43,8 +47,8 @@
 				<!-- coffeeAmount -->
 				<div id="coffeeAmount-group" class="form-group">
 					<label>Amount</label>
-					<input type="text" required name="coffeeAmount" class="form-control" placeholder="{{coffeeModel.amount}}" ng-model="formData.coffeeAmount">
-					
+					<input type="text" required name="coffeeAmount" class="form-control" placeholder="{{coffeeModel.coffeeAmount}}" ng-model="formData.coffeeAmount">
+					<span class="help-block"></span>
 				</div>
 
 

@@ -2,18 +2,7 @@ app.controller('MainController', function($rootScope, $scope, getCoffee, Coffee)
 
 
 
-	// Data model for the form inputs
-	$scope.coffeeModel = {
-		brand : "Douwe Egberts",
-		type : "Espresso",
-		description : "nice coffee",
-		amount : 500,
-		price : 15
-	};
 
-	$scope.messages = {
-		confirmAction : "Are you sure you want to delete?"
-	}
 
 
 
@@ -33,6 +22,11 @@ app.controller('MainController', function($rootScope, $scope, getCoffee, Coffee)
 	};
 
 
+	// Autofill
+	$scope.autofillCoffee = function() {
+		$scope.formData = $scope.coffeeModel;
+	};
+
 
 
 	$scope.getUnicCoffee = function(item_id) {
@@ -46,90 +40,45 @@ app.controller('MainController', function($rootScope, $scope, getCoffee, Coffee)
 
 
 
-
-
-
-	// Form handler
+	// Form data
 	$scope.formData = {};
 
-	// process the form
+	// Process the form
 	$scope.processForm = function() {
-
-		var data = $scope.formData
-		
-
-		console.log(data);
-
-		Coffee.save(data);
-/*
-		$http({
-		method  : 'POST',
-		url     : 'http://api.kpndigital.nl:3000/coffees/',
-		data    : $.param($scope.formData),  // pass in data as strings
-		headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
-		})
-
-		.success(function(data) {
-		
-		console.log(data);
-
-		if (!data.success) {
-		  // if not successful, bind errors to error variables
-		  $scope.errorBrand = data.errors.brand;
-		  $scope.errorPrice = data.errors.price;
+		var data = $scope.formData;
+		if (data) {
+			Coffee.save(data);
 		} else {
-		  // if successful, bind success message to message
-		  $scope.message = data.message;
+			console.log("No data")
 		}
-		});
-*/
-
 	};
 
 
 
 
+	// Data model for the form inputs
+	$scope.coffeeModel = {
+		brand : "Douwe Egberts",
+		type : "Espresso",
+		description : "nice coffee",
+		coffeeAmount : 500,
+		price : 15
+	};
+
+	// App generic messages
+	$scope.messages = {
+		confirmAction : "Are you sure you want to remove?"
+	};
 
 
 
 
-
-
-
-
-
-
-//
-// 'Forms' screen
-//  
-$scope.rememberMe = true;
-$scope.email = 'me@example.com';
-
-$scope.login = function(data) {
-	alert('You submitted the login form');
-};
-
-
-
-$scope.master = {};
-$scope.update = function(coffee) {
-	$scope.master = angular.copy(coffee);
-};
-$scope.reset = function() {
-	$scope.coffee = angular.copy($scope.master);
-};
-$scope.reset();
-
-
-
-
-
-// Needed for the loading screen
-$rootScope.$on('$routeChangeStart', function(){
-	$rootScope.loading = true;
-});
-$rootScope.$on('$routeChangeSuccess', function(){
-	$rootScope.loading = false;
+	// Needed for the loading screen
+	$rootScope.$on('$routeChangeStart', function(){
+		$rootScope.loading = true;
+	});
+	$rootScope.$on('$routeChangeSuccess', function(){
+		$rootScope.loading = false;
 });
 
 
