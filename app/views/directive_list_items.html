@@ -1,8 +1,7 @@
-<h1>{{info.brand}}</h1>
-<h2>{{info.type}}</h2>
-<p>{{info.description}}</p>
-<ul>
-	<li>{{info.coffeeAmount}}</li>
-	<li>{{info.price}}</li>
-	<li>{{info.lastChangeDate | date:"MM/dd/yyyy 'at' h:mma" }}</li>
-</ul>
+	<h1 class="item_title fa fa-coffee">{{info.brand}}</h1>
+	<h2 class="item_type fa fa-bookmark">{{info.type}}</h2>
+	<p  class="item_description fa fa-comment">{{info.description}}</p>
+	<span class="item_caffeeAmount fa fa-heart">{{info.coffeeAmount}}</span>
+	<span class="item_price fa fa-eur">{{info.price}}</span>
+	<p class="item_date">{{info.lastChangeDate | date:"MM/dd/yyyy 'at' h:mma" }}</p>
+	

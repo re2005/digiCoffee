@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "dependencies": {
     "angular": "^1.3.0",
-    "bootstrap": "^3.2.0",
     "angular-animate": "^1.3.0",
     "angular-cookies": "^1.3.0",
     "angular-resource": "^1.3.0",
@@ -13,7 +12,10 @@
   },
   "devDependencies": {
     "angular-mocks": "^1.3.0",
-    "angular-resource": "~1.3.15"
+    "angular-resource": "~1.3.15",
+    "angular": "~1.3.15",
+    "mobile-angular-ui": "~1.2.0-beta.11",
+    "normalize.css": "~3.0.3"    
   },
   "appPath": "app",
   "moduleName": "kpnDigitalCoffeeApp"

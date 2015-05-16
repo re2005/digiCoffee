@@ -3,16 +3,14 @@
 
 		<div class="list-group-item list-group-item-home">
 
+			<alert class="alert ng-isolate-scope alert-danger" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+
 			<!-- FORM -->
 			<form ng-submit="processForm()">
 
-				<button type="button" class="btn" ng-click="autofillCoffee()">
-					<span class="glyphicon"></span> autofill
-				</button>
-
 				<!-- Brand -->
 				<div id="name-group" class="form-group">
-					<label>Brand</label>
+					<label class="fa fa-coffee">Brand</label>
 					<input type="text" required name="brand" class="form-control" placeholder="{{coffeeModel.brand}}" ng-model="formData.brand">
 					<span class="help-block"></span>
 				</div>
@@ -20,24 +18,23 @@
 
 				<!-- Type -->
 				<div id="type-group" class="form-group">
-					<label>Type</label>
+					<label class="fa fa-bookmark">Type</label>
 					<input type="text" required name="type" class="form-control" placeholder="{{coffeeModel.type}}" ng-model="formData.type">
 					<span class="help-block"></span>
 				</div>
 
 
-
 				<!-- Description -->
 				<div id="description-group" class="form-group">
-					<label>Description</label>
-					<input type="text" required name="description" class="form-control" placeholder="Soft" ng-model="formData.description">
+					<label class="fa fa-comment">Description</label>
+					<input type="text" required name="description" class="form-control" placeholder="{{coffeeModel.description}}" ng-model="formData.description">
 					<span class="help-block"></span>
 				</div>
 
 
 				<!-- Price -->
 				<div id="price-group" class="form-group">
-					<label>Price €</label>
+					<label class="fa fa-eur">Price</label>
 					<input type="text" required name="price" class="form-control" placeholder="{{coffeeModel.price | currency:'€' }}" ng-model="formData.price">
 					<span class="help-block"></span>
 				</div>
@@ -46,16 +43,20 @@
 
 				<!-- coffeeAmount -->
 				<div id="coffeeAmount-group" class="form-group">
-					<label>Amount</label>
+					<label class="fa fa-heart">Amount</label>
 					<input type="text" required name="coffeeAmount" class="form-control" placeholder="{{coffeeModel.coffeeAmount}}" ng-model="formData.coffeeAmount">
 					<span class="help-block"></span>
 				</div>
 
 
+				<!-- Autofill button -->
+				<button type="button" class="btn btn-primary btn-lg" ng-click="autofillCoffee()">
+					<span class="glyphicon"></span> Autofill
+				</button>
 
-				<!-- SUBMIT BUTTON -->
-				<button type="submit" class="btn btn-success btn-lg btn-block">
-					<span class="glyphicon glyphicon-flash"></span> Submit!
+				<!-- Submit button -->
+				<button type="submit" class="btn btn-success btn-lg">
+					<span class="glyphicon glyphicon-flash"></span> Send ;)
 				</button>
 			</form>
 

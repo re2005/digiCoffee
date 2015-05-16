@@ -1,15 +1,13 @@
 <div class="scrollable">  
 	<div class="scrollable-content">
 	 	<div class="list-group-item list-group-item-home">
-
-			Serach by Brand: <input type="text" ng-model="search.brand">
-			<div ng-repeat="post in posts | filter:search.brand" id="{{post._id}}">
-				<coffee-app info="post.expenses"></coffee-app>
-				<button ng-href='#' confirmed-click="deleteCoffee(posts, post._id, $index)" ng-confirm-click="{{messages.confirmAction}}">remove</button>
+	 		<input type="text" ng-model="search.brand" class="form-control" placeholder="{{messages.searchBox}}">
+			<hr>
+			<div ng-repeat="post in posts | filter:search.brand | orderBy:date" id="{{post._id}}" class="list_items">
+				<coffee-app info="post.expenses" class="item_list"></coffee-app>
+				<button ng-href='#' class="remove fa fa-trash-o" confirmed-click="deleteCoffee(posts, post._id, $index)" ng-confirm-click="{{messages.confirmAction}}"></button>
+				<hr>
 			</div>
-
 		</div>
 	</div>
 </div>
-
-

@@ -1,5 +1,6 @@
+'use strict';
 
-app.directive('coffeeApp', function() { 
+angular.module('digitalCoffee').directive('coffeeApp', function() { 
 	return { 
 		restrict: 'E', 
 		scope: { 
@@ -11,17 +12,17 @@ app.directive('coffeeApp', function() {
 
 
 
-app.directive('ngConfirmClick', [
+angular.module('digitalCoffee').directive('ngConfirmClick', [
 	function(){
 		return {
 			link: function (scope, element, attr) {
-				var msg = attr.ngConfirmClick || "Are you sure?";
+				var msg = attr.ngConfirmClick || 'Are you sure?';
 				var clickAction = attr.confirmedClick;
-				element.bind('click',function (event) {
+				element.bind('click',function () {
 					if ( window.confirm(msg) ) {
-						scope.$eval(clickAction)
+						scope.$eval(clickAction);
 					}
 				});
 			}
 		};
-}])
+}]);
