@@ -1,6 +1,6 @@
 .items_style {
   padding: 10px;
-  background: #ccc;
+  background: #EBEBEB;
   color: #333;
 }
 [class^="item_"] {
@@ -16,7 +16,7 @@
 .item_title {
   position: relative;
   z-index: 0;
-  padding: 20px;
+  padding: 20px 12px;
   background: #333;
   color: #ccc;
   font-size: 2.4rem;
@@ -33,11 +33,16 @@
   padding: 10px;
   color: #fff;
 }
-.item_description,
+.item_description {
+  width: 100%;
+  background: #D4D4D4;
+  margin-bottom: 2px;
+  padding: 10px;
+}
 .item_price,
 .item_caffeeAmount {
   padding: 10px;
-  background: #ccc;
+  background: #EBEBEB;
   color: #333;
 }
 .item_date {
@@ -51,7 +56,7 @@
   border: 1px solid transparent;
   color: #fff;
   z-index: 99;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   position: absolute;
   right: 0;
   top: 0;
