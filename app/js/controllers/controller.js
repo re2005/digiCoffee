@@ -1,16 +1,16 @@
 'use strict';
 
 
-angular.module('digitalCoffee').controller('MainController', function($rootScope, $scope, Coffee){
+angular.module('digitalCoffee').controller('MainController', function($rootScope, $scope, Coffee, $window){
 
 
+	// Get the resource and set in $scope
 	var getData = function() {
-		// Grab the DB results
 		Coffee.query(function(data) {
-			$scope.posts = data;
+			$scope.posts = data; // Grab the DB results set as "posts"
 		});
 	};
-
+	// Run to set data to $scope
 	getData();
 
 
@@ -23,21 +23,22 @@ angular.module('digitalCoffee').controller('MainController', function($rootScope
 	};
 
 
-
 	// Process the form
 	// Form data
 	$scope.formData = {};
-	// Read the inputs and send by $resource the data to the API
+	
+	// Read the inputs and send the data using $resource to the API
 	$scope.processForm = function() {
 		var data = $scope.formData;
 		if (data) {
+
 			Coffee.save(data);
 			$scope.posts.push(data);
-			$scope.formData = {};
-				
-				setTimeout(function(){ 
-					getData();
-				}, 1000);
+			$scope.resetCoffee();
+			$window.alert($scope.messages.coffeeSent);
+			setTimeout(function(){ 
+				getData();
+			}, 1000);
 
 		} else {
 			console.log('No data');
@@ -48,6 +49,9 @@ angular.module('digitalCoffee').controller('MainController', function($rootScope
 		$scope.formData = $scope.coffeeModel;
 	};
 
+	$scope.resetCoffee = function() {
+		$scope.formData = {};
+	};
 
 
 
@@ -69,7 +73,9 @@ angular.module('digitalCoffee').controller('MainController', function($rootScope
 	// Messages shared
 	$scope.messages = {
 		confirmAction : 'Are you sure you want to remove?',
-		searchBox : 'Search something'
+		searchBox : 'Search something',
+		coffeeSent : 'Congrats :) you have more coffee now!',
+		onlyNumber : 'Please use number for price and amount'
 	};
 
 

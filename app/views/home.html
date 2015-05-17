@@ -1,6 +1,7 @@
 <div class="scrollable">  
 	<div class="scrollable-content">
 	 	<div class="list-group-item list-group-item-home">
+	 		
 	 		<input type="text" ng-model="search.brand" class="form-control" placeholder="{{messages.searchBox}}">
 			<hr>
 			<div ng-repeat="post in posts | filter:search.brand | orderBy:date" id="{{post._id}}" class="list_items">

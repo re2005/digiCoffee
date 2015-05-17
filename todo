@@ -1,2 +1,4 @@
+- Form validation better
 - Improve layout
-- 
+- Error and sucess message from server
+- Grunt generator

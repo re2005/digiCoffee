@@ -1,7 +1,3 @@
-
-
-
-
 // Coffee List Style
 .items_style {
   padding: 10px;  
@@ -28,8 +24,9 @@
   display: block;
 }
 .item_title:before {
-  font-size: 2rem;
+  font-size: 2.4rem;
   margin-right: 13px;
+  color: #fff;
 }
 .item_type {
   display: block;
@@ -40,7 +37,7 @@
 .item_description,
 .item_price,
 .item_caffeeAmount {
-  .items_style
+  .items_style;
 }
 .item_date {
   padding: 5px 0 ;
@@ -53,10 +50,9 @@
   border: 1px solid transparent;
   color: #fff;
   z-index: 99;
-  font-size: .9rem;
+  font-size: 1.2rem;
   position: absolute;
   right: 0;
-  font-size: 2rem;
   top: 0;
   padding: 10px;
 }
@@ -68,4 +64,42 @@ form .fa:before{
 }
 form .fa {
   font-size: 1.6rem;
+}
+
+
+
+
+
+.form-control::-webkit-input-placeholder {
+    color:    #E3D6C8;
+}
+.form-control:-moz-placeholder {
+    color:    #E3D6C8;
+}
+.form-control::-moz-placeholder {
+    color:    #E3D6C8;
+}
+.form-control:-ms-input-placeholder {
+    color:    #E3D6C8;
+}
+
+
+
+
+// Loading
+.app-content-loading {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  position: relative;
+}
+
+.loading-spinner {
+  position: absolute;
+  font-size: 50px;
+  left: 50%;
+  top: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
 }
